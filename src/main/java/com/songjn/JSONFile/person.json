@@ -1,0 +1,10 @@
+[
+  {
+    "age": 1,
+    "name": "How do I read a JSON stream in Java?"
+  },
+  {
+    "age": 2,
+    "name": "@json_newb just use JsonReader!"
+  }
+]
