@@ -176,7 +176,6 @@ public class ArrayListDemo {
 interface UserFilter {
     boolean prdicate(User user);
 }
-
 //被过滤的类
 class User {
     private String name;
