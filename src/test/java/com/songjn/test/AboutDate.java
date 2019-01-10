@@ -21,7 +21,7 @@ public class AboutDate {
         //(4)
         java.sql.Timestamp time = new java.sql.Timestamp(System.currentTimeMillis());
         System.out.println(time);
-        DateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日  HH：mm：ss 今年第ww周  第DD天");
+        DateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日  HH:mm:ss 今年第ww周  第DD天");
 
         System.out.println(time1);
         System.out.println("---------------");
