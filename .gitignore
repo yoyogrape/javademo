@@ -2,4 +2,5 @@
 architestpro.iml
 .mvn
 mvnw
-mvnw.cmd
+mvnw.mdc
+/target
