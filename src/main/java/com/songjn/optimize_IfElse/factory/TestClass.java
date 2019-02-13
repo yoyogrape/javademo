@@ -5,7 +5,7 @@ package com.songjn.optimize_IfElse.factory;
  * @create 2019-01-29
  * @desc  demo1:用工厂类去掉简单的if-else
  */
-public class ExplainClass {
+public class TestClass {
 
     public static void main(String[] args) {
         int cond=2;
