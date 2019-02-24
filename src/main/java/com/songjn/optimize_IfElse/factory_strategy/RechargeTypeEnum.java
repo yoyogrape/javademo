@@ -37,6 +37,7 @@ public enum RechargeTypeEnum {
                 return type;
             }
         }
+
         return null;
     }
 }
