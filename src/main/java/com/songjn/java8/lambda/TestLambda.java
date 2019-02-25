@@ -19,11 +19,20 @@ public class TestLambda {
         Comparator<Integer> com = new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
-                return Integer.compare(o1, o2);
+                return -Integer.compare(o1, o2);
             }
         };
 
         TreeSet<Integer> ts = new TreeSet<>(com);
+        //Set<Integer> ts = new HashSet<>();
+
+        ts.add(1);
+        ts.add(4);
+        ts.add(3);
+        ts.add(9);
+        ts.add(0);
+        ts.forEach(System.out::println);
+
     }
 
     /**
