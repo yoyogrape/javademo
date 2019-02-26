@@ -16,7 +16,8 @@ public class Employee {
         this.age = age;
         this.salary = salary;
     }
-
+    public Employee() {
+    }
     @Override
     public String toString() {
         return "Employee{" +
