@@ -11,6 +11,71 @@ import java.util.function.*;
  * @desc lambda示例
  */
 public class TestLambda {
+
+
+    @Test
+    public void test() {
+        //按照年龄排序
+        employees.stream()
+                .sorted((e1,e2)->Integer.compare(e1.getAge(),e2.getAge()))
+                .forEach(System.out::println);
+        System.out.println("---------------");
+
+        //按照年龄排序,年龄相同按照名字排序
+        employees.stream()
+                .sorted((e1,e2)->{
+                    if(e1.getAge()==e2.getAge()){
+                        return e1.getName().compareTo(e2.getName());
+                    }else{
+                        return Integer.compare(e1.getAge(),e2.getAge());
+                    }
+                })
+                .forEach(System.out::println);
+        System.out.println("---------------");
+
+        //将年龄取出来然后进行排序
+        employees.stream()
+                .map(e->e.getAge())
+                .sorted(Integer::compare)
+                .forEach(System.out::println);
+        System.out.println("---------------");
+
+
+        //获取最大年龄
+        final Optional<Employee> max = employees.stream()
+                .max((x, y) -> Integer.compare(x.getAge(), y.getAge()));
+        System.out.println(max.get());
+        System.out.println("---------------");
+
+
+        //获取张三的信息
+        employees.stream()
+                .filter(employee -> employee.getName().equals("张三"))
+                .forEach(System.out::println);
+        System.out.println("---------------");
+
+        //获取年龄大于25的员工
+        employees.stream()
+                .filter(employee -> employee.getAge()>25)
+                .forEach(System.out::println);
+        System.out.println("---------------");
+
+
+        //获取员工的名字，并自然排序
+        employees.stream()
+                .map(employee -> employee.getName())
+                .sorted()
+                .forEach(System.out::println);
+        System.out.println("---------------");
+
+        //找出工资最低的员工
+        final Optional<Employee> min = employees.stream()
+                .min((e1, e2) -> Double.compare(e1.getSalary(), e2.getSalary()));
+        System.out.println(min.get());
+        System.out.println("---------------");
+    }
+
+
     /**
      * 以前进行类对象的比较
      */
@@ -32,6 +97,7 @@ public class TestLambda {
         ts.add(9);
         ts.add(0);
         ts.forEach(System.out::println);
+
 
     }
 

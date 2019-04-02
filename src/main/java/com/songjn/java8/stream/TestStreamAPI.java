@@ -1,5 +1,6 @@
 package com.songjn.java8.stream;
 
+import com.alibaba.fastjson.JSON;
 import com.songjn.java8.lambda.Employee;
 import org.junit.jupiter.api.Test;
 
@@ -248,7 +249,7 @@ public class TestStreamAPI {
 
     //分组
     @Test
-    public void test5(){
+    public void test5() {
         Map<String, List<Employee>> map = employees.stream()
                 .collect(Collectors.groupingBy(Employee::getName));
 
@@ -257,12 +258,12 @@ public class TestStreamAPI {
 
     //多级分组
     @Test
-    public void test6(){
+    public void test6() {
         Map<String, Map<String, List<Employee>>> map = employees.stream()
                 .collect(Collectors.groupingBy(Employee::getName, Collectors.groupingBy((e) -> {
-                    if(e.getAge() >= 60)
+                    if (e.getAge() >= 60)
                         return "老年";
-                    else if(e.getAge() >= 35)
+                    else if (e.getAge() >= 35)
                         return "中年";
                     else
                         return "成年";
@@ -273,7 +274,7 @@ public class TestStreamAPI {
 
     //分区
     @Test
-    public void test7(){
+    public void test7() {
         Map<Boolean, List<Employee>> map = employees.stream()
                 .collect(Collectors.partitioningBy((e) -> e.getSalary() >= 5000));
 
@@ -282,20 +283,39 @@ public class TestStreamAPI {
 
     //
     @Test
-    public void test8(){
+    public void test8() {
         String str = employees.stream()
                 .map(Employee::getName)
-                .collect(Collectors.joining("," , "----", "----"));
+                .collect(Collectors.joining(",", "----", "----"));
 
         System.out.println(str);
     }
 
     @Test
-    public void test9(){
+    public void test9() {
         Optional<Double> sum = employees.stream()
                 .map(Employee::getSalary)
                 .collect(Collectors.reducing(Double::sum));
 
         System.out.println(sum.get());
     }
+
+
+    @Test
+    public void test10() {
+        employees.stream()
+                .map(emp -> {
+                    if ("张三".equals(emp.getName())) {
+                        emp.setSalary(emp.getSalary() + 100);
+                    }
+                    return emp;
+                }).collect(Collectors.toList());
+
+        employees.forEach(System.out::println);
+
+    }
+
+
+
+
 }
