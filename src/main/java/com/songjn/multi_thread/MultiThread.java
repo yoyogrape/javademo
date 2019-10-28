@@ -70,7 +70,7 @@ public class MultiThread {
     }
 
     //继承Thread实现多线程
-    class ThreadOne extends Thread {    // 实现Runnable接口
+    class ThreadOne extends Thread {
         @Override
         public void run() {
             for (int i = 0; i < 3; i++) {

@@ -1,8 +1,11 @@
 package com.songjn.test;
+
 import java.sql.Timestamp;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 /**
  * @auther songjn1
  * @create 2019-01-16
@@ -28,9 +31,11 @@ public class dateTesa {
 //        SimpleDateFormat sdf = (SimpleDateFormat) DateFormat.getDateTimeInstance();
 //        System.out.println("日期时间：" + sdf.format(date));
 
-        final String format = DateFormat.getDateTimeInstance().format(new Date());
+//        final String format = DateFormat.getDateTimeInstance().format(new Date());
+//        final String format = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+        final String format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+//        String format = DateFormat.getDateTimeInstance().format(new Date());
         System.out.println(format);
-
 
 
     }

@@ -12,6 +12,32 @@ import java.util.stream.Collectors;
  * @desc
  */
 public class ArrayListDemo {
+
+    //==============================两个集合的互相去除===============================
+    /**
+     * 两个集合的互相去除
+     */
+    @Test
+    void removeYours() {
+        List<String> list1 = new ArrayList<String>();
+//        list1.add("A");
+        list1.add("B");
+
+        List<String> list2 = new ArrayList<String>();
+        list2.add("B");
+        list2.add("C");
+
+        List<String> copyOriginalLanguageIds = new ArrayList<>(list1);
+        List<String> copyNewLanguageIds = new ArrayList<>(list2);
+
+        list1.removeAll(copyNewLanguageIds);
+        list2.removeAll(copyOriginalLanguageIds);
+
+        System.out.println(list1);
+        System.out.println(list2);
+
+    }
+
     //==============================集合和数组相互转换===============================
     /**
      * 数组集合的相互转换
