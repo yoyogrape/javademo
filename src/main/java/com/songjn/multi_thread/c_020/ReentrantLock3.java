@@ -32,11 +32,15 @@ public class ReentrantLock3 {
 
     void m2() {
         // 尝试获取锁，返回true拿到了
-        if (lock.tryLock()) {
-            // lock.tryLock(5, TimeUnit.SECONDS) // 等5s内还没拿到就返回false
-            System.out.println("m2...");
-        } else {
-            System.out.println(" m2 没拿到锁");
+        try {
+            if (lock.tryLock(5, TimeUnit.SECONDS)) {
+                // lock.tryLock(5, TimeUnit.SECONDS) // 等5s内还没拿到就返回false
+                System.out.println("m2...");
+            } else {
+                System.out.println(" m2 没拿到锁");
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         lock.unlock();
     }

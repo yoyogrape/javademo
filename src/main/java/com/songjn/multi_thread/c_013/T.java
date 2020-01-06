@@ -11,13 +11,13 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class T {
 
-    volatile int count = 0;
-    /*AtomicInteger count = new AtomicInteger(0);*/
+//    volatile int count = 0;
+    AtomicInteger count = new AtomicInteger(0);
     
     /*synchronized*/ void m() {
-        for (int i = 0; i < 10000; i++) {
-            count++;
-            /*count.incrementAndGet();*/
+        for (int i = 0; i < 10000000; i++) {
+//            count++;
+            count.incrementAndGet();
         }
     }
 
@@ -27,7 +27,7 @@ public class T {
         List<Thread> threads = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             threads.add(new Thread(t::m, "t-" + i));
-        }
+    }
         
         // 启动这10个线程
         threads.forEach(Thread::start);
