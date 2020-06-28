@@ -1,6 +1,5 @@
 package com.songjn.reflection;
 
-import jdk.nashorn.internal.ir.IfNode;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.*;
