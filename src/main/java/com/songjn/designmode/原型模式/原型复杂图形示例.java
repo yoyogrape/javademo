@@ -3,6 +3,9 @@ package com.songjn.designmode.原型模式;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * 一句话：利用clone快速复制出大量的对象
+ */
 interface Shape extends Cloneable {
     public Object clone();    //拷贝
 
@@ -67,6 +70,11 @@ class ProtoTypeManager {
     }
 }
 
+/**
+ * 原型模式通常适用于以下场景。
+ * 对象之间相同或相似，即只是个别的几个属性不同的时候。
+ * 对象的创建过程比较麻烦，但复制比较简单的时候。
+ */
 public class 原型复杂图形示例 {
     public static void main(String[] args) {
         ProtoTypeManager pm = new ProtoTypeManager();
