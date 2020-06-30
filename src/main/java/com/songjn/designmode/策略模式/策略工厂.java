@@ -4,7 +4,8 @@ import java.util.HashMap;
 
 public class 策略工厂 {
     public static void main(String[] args) {
-        ToAgentStrategyFactory.exeToAgentStrategy("moli");
+        ToAgentStrategyFactory2.exeToAgentStrategy("moli");
+        ToAgentStrategyFactory2.exeToAgentStrategy("moli");
     }
 }
 
@@ -30,7 +31,7 @@ class lenaToAgentStrategy implements ToAgentStrategy {
 }
 
 /**
- * 转人工工厂
+ * 转人工工厂，静态块工厂
  */
 class ToAgentStrategyFactory {
     private static HashMap<String, ToAgentStrategy> agentMap = new HashMap<>();
@@ -50,6 +51,38 @@ class ToAgentStrategyFactory {
 
     public static void exeToAgentStrategy(String agent) {
         agentMap.get(agent).agentStrategy();
+    }
+
+}
+
+/**
+ * 转人工工厂，懒加载工厂
+ */
+class ToAgentStrategyFactory2 {
+    private static HashMap<String, ToAgentStrategy> agentMap = new HashMap<>();
+
+    private void put(String agent, ToAgentStrategy agentStrategy) {
+        agentMap.put(agent, agentStrategy);
+    }
+
+    private static ToAgentStrategy get(String agent) {
+        ToAgentStrategy toAgentStrategy = agentMap.get(agent);
+        if (toAgentStrategy == null) {
+            if ("moli".equalsIgnoreCase(agent)) {
+                moliToAgentStrategy moliToAgentStrategy = new moliToAgentStrategy();
+                agentMap.put("moli", moliToAgentStrategy);
+                return moliToAgentStrategy;
+            } else if ("lena".equalsIgnoreCase(agent)) {
+                lenaToAgentStrategy lenaToAgentStrategy = new lenaToAgentStrategy();
+                agentMap.put("lena", lenaToAgentStrategy);
+                return lenaToAgentStrategy;
+            }
+        }
+        return toAgentStrategy;
+    }
+
+    public static void exeToAgentStrategy(String agent) {
+        get(agent).agentStrategy();
     }
 
 }
