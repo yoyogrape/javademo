@@ -14,17 +14,17 @@ public class ScoreStateTest {
 
 //环境类
 class ScoreContext {
-    private AbstractState state;
+    private 成绩 state;
 
     ScoreContext() {
         state = new LowState(this);
     }
 
-    public void setState(AbstractState state) {
+    public void setState(成绩 state) {
         this.state = state;
     }
 
-    public AbstractState getState() {
+    public 成绩 getState() {
         return state;
     }
 
@@ -34,7 +34,7 @@ class ScoreContext {
 }
 
 //抽象状态类
-abstract class AbstractState {
+abstract class 成绩 {
     protected ScoreContext hj;  //环境
     protected String stateName; //状态名
     protected int score; //分数
@@ -50,14 +50,14 @@ abstract class AbstractState {
 }
 
 //具体状态类：不及格
-class LowState extends AbstractState {
+class LowState extends 成绩 {
     public LowState(ScoreContext h) {
         hj = h;
         stateName = "不及格";
         score = 0;
     }
 
-    public LowState(AbstractState state) {
+    public LowState(成绩 state) {
         hj = state.hj;
         stateName = "不及格";
         score = state.score;
@@ -73,8 +73,8 @@ class LowState extends AbstractState {
 }
 
 //具体状态类：中等
-class MiddleState extends AbstractState {
-    public MiddleState(AbstractState state) {
+class MiddleState extends 成绩 {
+    public MiddleState(成绩 state) {
         hj = state.hj;
         stateName = "中等";
         score = state.score;
@@ -90,8 +90,8 @@ class MiddleState extends AbstractState {
 }
 
 //具体状态类：优秀
-class HighState extends AbstractState {
-    public HighState(AbstractState state) {
+class HighState extends 成绩 {
+    public HighState(成绩 state) {
         hj = state.hj;
         stateName = "优秀";
         score = state.score;
