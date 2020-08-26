@@ -60,9 +60,14 @@ public class TestStreamAPI {
     //1)filter(Predicate<? super T> predicate)
     @Test
     public void creatStream2() {
-        employees.stream()
-                .filter(e -> e.getAge() > 25)
-                .forEach(System.out::println);
+//        employees.stream()
+//                .filter(e -> e.getAge() > 25)
+//                .forEach(System.out::println);
+
+        Employee employee = employees.stream().findFirst().get();
+        System.out.println(employee);
+        Employee employee2 = employees.stream().findAny().get();
+        System.out.println(employee2);
     }
 
     //2)limit(long maxSize);
@@ -107,6 +112,8 @@ public class TestStreamAPI {
         employees.stream()
                 .map(Employee::getName)
                 .forEach(System.out::println);
+
+        List<String> nameList = employees.stream().map(e -> e.getName()).collect(Collectors.toList());
 
     }
 
